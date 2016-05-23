@@ -1,6 +1,6 @@
 
 # images base
-images/
+data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -9,6 +9,7 @@ __pycache__/
 
 # C extensions
 *.so
+*.o
 
 # Distribution / packaging
 .Python

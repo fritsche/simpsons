@@ -9,8 +9,6 @@ import os
 import numpy as np
 from skimage.feature import hog
 
-from utils import load_image
-
 def color_histogram (image):
 	hist = cv2.calcHist([image], [0, 1, 2], None, [4, 4, 4], [0, 256, 0, 256, 0, 256])
 	hist = hist.flatten()
@@ -50,8 +48,23 @@ if __name__ == "__main__":
 		else:
 			classes.append(5)
 
-		image = load_image(pathtodata+"/"+filename)
-		
+		print (pathtodata+"/"+filename)
+
+		image = cv2.imread(pathtodata+"/"+filename)
+		cv2.namedWindow('image', cv2.WINDOW_NORMAL)
+		cv2.imshow('image',image)
+		cv2.waitKey(0)
+		cv2.destroyAllWindows()
+
+		print (pathtodata+"/"+filename)
+
+   		image = cv2.resize(image, (150,150), interpolation = cv2.INTER_LINEAR)
+
+		cv2.namedWindow('image', cv2.WINDOW_NORMAL)
+		cv2.imshow('image',image)
+		cv2.waitKey(0)
+		cv2.destroyAllWindows()
+
 		if (descriptor == "color_histogram"):
 			vector = color_histogram (image)
 		elif (descriptor == "hu_moments"):

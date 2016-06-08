@@ -1,0 +1,127 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+%\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[utf8]{inputenc}
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[portuguese]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{Universidade Federal do Paraná} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Reconhecimento de Padrões \\
+\large Trabalho final  % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Gian Maurício Fritsche} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section{Descrição do trabalho}
+
+Para a realização deste trabalho foi utilizada a base de imagens SIMPSONS\footnote{\url{http://www.inf.ufpr.br/lesoliveira/padroes/simpsons.zip}}.
+O objetivo é construir um sistema de reconhecimento de padrões que discrimine as cinco classes (representando os cinco personagens principais: Bart, Homer, Lisa, Maggie e Marge).
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.15\textwidth}
+        \includegraphics[width=\textwidth]{bart001}
+        \caption{Bart}
+        \label{fig:bart}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.15\textwidth}
+        \includegraphics[width=\textwidth]{homer001}
+        \caption{Homer}
+        \label{fig:homer}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+    %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.15\textwidth}
+        \includegraphics[width=\textwidth]{lisa001}
+        \caption{Lisa}
+        \label{fig:lisa}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+    %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.15\textwidth}
+        \includegraphics[width=\textwidth]{maggie001}
+        \caption{Maggie}
+        \label{fig:maggie}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+    %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.15\textwidth}
+        \includegraphics[width=\textwidth]{marge001}
+        \caption{Marge}
+        \label{fig:marge}
+    \end{subfigure}
+    \caption{Exemplos de imagens}\label{fig:exemplos}
+\end{figure}
+
+
+\end{document}

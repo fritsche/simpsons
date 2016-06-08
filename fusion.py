@@ -10,7 +10,7 @@ from sklearn.metrics import confusion_matrix
 
 if __name__=='__main__':
 
-	fusion = 'sum'
+	fusion = 'min'
 
 	# features_list = ['color_histogram']
 	# classifiers = ['svm']
@@ -52,6 +52,30 @@ if __name__=='__main__':
 		matrix = np.zeros(pred_probs[0].shape)
 		for pred_prob in pred_probs:
 		 	matrix = matrix + pred_prob
+		y_pred = np.argmax(matrix, axis=1)
+
+	if fusion == 'max' :
+		matrix = np.zeros(pred_probs[0].shape)
+		for pred_prob in pred_probs:
+			for i in xrange(0,len(pred_prob)):
+				for j in xrange(0,len(pred_prob[i])):
+					if (pred_prob[i][j] > matrix [i][j]):
+						matrix[i][j] = pred_prob[i][j]
+		y_pred = np.argmax(matrix, axis=1)
+
+	if fusion == 'min' :
+		matrix = np.ones(pred_probs[0].shape)
+		for pred_prob in pred_probs:
+			for i in xrange(0,len(pred_prob)):
+				for j in xrange(0,len(pred_prob[i])):
+					if (pred_prob[i][j] < matrix [i][j]):
+						matrix[i][j] = pred_prob[i][j]
+		y_pred = np.argmax(matrix, axis=1)
+
+	if fusion == 'product' :
+		matrix = np.ones(pred_probs[0].shape)
+		for pred_prob in pred_probs:
+		 	matrix = np.multiply(matrix, pred_prob)
 		y_pred = np.argmax(matrix, axis=1)
 
 	size = len(y_test)

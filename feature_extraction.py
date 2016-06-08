@@ -26,14 +26,11 @@ def histogram_of_oriented_gradients (image):
 				cells_per_block=(1, 1), visualise=False, normalise=False)
 	return hist.flatten()
 
-features = []
-classes = []
+def extraction (pathtodata, descriptor) :
 
-if __name__ == "__main__":
-
-	pathtodata = sys.argv[1]
-	descriptor = sys.argv[2]
-
+	features = []
+	classes = []
+	
 	for filename in os.listdir(pathtodata):
 		if filename.startswith ("bart"):
 			classes.append(0)
@@ -48,22 +45,11 @@ if __name__ == "__main__":
 		else:
 			classes.append(5)
 
-		print (pathtodata+"/"+filename)
-
 		image = cv2.imread(pathtodata+"/"+filename)
-		cv2.namedWindow('image', cv2.WINDOW_NORMAL)
-		cv2.imshow('image',image)
-		cv2.waitKey(0)
-		cv2.destroyAllWindows()
 
-		print (pathtodata+"/"+filename)
+		image = cv2.resize(image, (150,150), interpolation = cv2.INTER_LINEAR)
 
-   		image = cv2.resize(image, (150,150), interpolation = cv2.INTER_LINEAR)
-
-		cv2.namedWindow('image', cv2.WINDOW_NORMAL)
-		cv2.imshow('image',image)
-		cv2.waitKey(0)
-		cv2.destroyAllWindows()
+		vector = []
 
 		if (descriptor == "color_histogram"):
 			vector = color_histogram (image)
@@ -76,5 +62,19 @@ if __name__ == "__main__":
 		
 		features.append(vector)
 
-	np.savetxt("data/features.txt", features)
-	np.savetxt("data/classes.txt", classes, fmt="%d")
+	return features, classes
+
+if __name__=='__main__':
+
+	features = []
+	classes = []
+
+	if __name__ == "__main__":
+
+		pathtodata = sys.argv[1]
+		descriptor = sys.argv[2]
+
+		features, classes = extraction (pathtodata, descriptor)
+
+		np.savetxt("data/features.txt", features)
+		np.savetxt("data/classes.txt", classes, fmt="%d")

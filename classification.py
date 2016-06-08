@@ -39,70 +39,79 @@ def print_usage ():
 	print("\t\t<test_base_file>: text file with the test base" )
 	print("\t\t<method>: classification method" )
 
-# main
+def classifier (method, X_train, y_train):
+	if method == "lda" :
+		clf = LDA() 
+	elif method == "knn" :
+		clf = KNeighborsClassifier(n_neighbors=5, metric='euclidean')
+	elif method == "svm" :
+		clf = GridSearch(X_train, y_train)
+	else:
+		print ("Unknown classifier method ", method)
 
-if len(sys.argv) == 4 : # train_file test_file method
-	train_file = sys.argv[1]
-	test_file = sys.argv[2]
-	method = sys.argv[3]
-else :
-	print ("Bad usage");
-	print ("The correct usage is: ");
-	print_usage()
-	sys.exit(1)
+	clf.fit(X_train, y_train)
 
-X_train = []
-y_train = []
-X_test = []
-y_test = []
+	return clf
 
-with open(train_file) as f:
-    content = f.readlines()
+if __name__=='__main__':
 
-lines, features = content[0].split()
-for x in range(1,int(lines)+1):
-	data = content[x].split()
-	data = map (float, data)
-	X_train.append(data[:-1])
-	y_train.append(data[-1])
+	if len(sys.argv) == 4 : # train_file test_file method
+		train_file = sys.argv[1]
+		test_file = sys.argv[2]
+		method = sys.argv[3]
+	else :
+		print ("Bad usage");
+		print ("The correct usage is: ");
+		print_usage()
+		sys.exit(1)
 
-with open(test_file) as f:
-    content = f.readlines()
+	X_train = []
+	y_train = []
+	X_test = []
+	y_test = []
 
-lines, features = content[0].split()
-for x in range(1,int(lines)+1):
-	data = content[x].split()
-	data = map (float, data)
-	X_test.append(data[:-1])
-	y_test.append(data[-1])
+	with open(train_file) as f:
+	    content = f.readlines()
 
-scaler = preprocessing.MinMaxScaler()
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
+	lines, features = content[0].split()
+	for x in range(1,int(lines)+1):
+		data = content[x].split()
+		data = map (float, data)
+		X_train.append(data[:-1])
+		y_train.append(data[-1])
 
-X_train = np.asarray(X_train)
-X_test = np.asarray(X_test)
+	with open(test_file) as f:
+	    content = f.readlines()
 
-if method == "lda" :
-	clf = LDA() 
-elif method == "knn" :
-	clf = KNeighborsClassifier(n_neighbors=5, metric='euclidean')
-elif method == "svm" :
-	clf = GridSearch(X_train, y_train)
-else:
-	print ("Unknown classifier method ", method)
+	lines, features = content[0].split()
+	for x in range(1,int(lines)+1):
+		data = content[x].split()
+		data = map (float, data)
+		X_test.append(data[:-1])
+		y_test.append(data[-1])
 
-clf.fit(X_train, y_train)
+	scaler = preprocessing.MinMaxScaler()
+	X_train = scaler.fit_transform(X_train)
+	X_test = scaler.transform(X_test)
 
-y_pred = clf.predict(X_test) 
-y_predProb = clf.predict_proba(X_test) 
+	X_train = np.asarray(X_train)
+	X_test = np.asarray(X_test)
 
-# mostra o resultado do classificador na base de teste
-print "Score", clf.score(X_test, y_test)
+	clf = classifier (method, X_train, y_train)
 
-# cria a matriz de confusao
-# cm = confusion_matrix(y_test, y_pred)
-# print cm
+	y_pred = clf.predict(X_test) 
+	y_predProb = clf.predict_proba(X_test) 
 
-# print y_predProb
+	# mostra o resultado do classificador na base de teste
+	print "Score", clf.score(X_test, y_test)
+
+	# cria a matriz de confusao
+	cm = confusion_matrix(y_test, y_pred)
+	print cm
+
+	print "y_pred"
+	print y_pred
+
+	print "y_predProb"
+	print y_predProb
 

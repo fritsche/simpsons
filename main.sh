@@ -14,7 +14,7 @@ do
 		echo "Classifier: $classifier"
 		echo "Feature extraction: $features" 
 
-		python feature_extraction.py data/flop/ $features
+		python feature_extraction.py data/Train/ $features
 		echo $( wc -l < data/features.txt )  $( awk '{print NF}' data/features.txt | head -n 1 ) > data/train.txt
 		paste data/features.txt data/classes.txt >> data/train.txt
 

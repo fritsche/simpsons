@@ -1,4 +1,7 @@
 # Data Augmentation
+# http://docs.opencv.org/master/da/d6e/tutorial_py_geometric_transformations.html#gsc.tab=0
+
+# @TODO refazer de bash para python
 
 for i in 90 180 270; do	
 	rm -rf data/$i/

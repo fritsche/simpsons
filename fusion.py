@@ -10,7 +10,7 @@ from sklearn.metrics import confusion_matrix
 
 if __name__=='__main__':
 
-	fusion = 'min'
+	fusion = 'borda'
 
 	# features_list = ['color_histogram']
 	# classifiers = ['svm']
@@ -76,6 +76,17 @@ if __name__=='__main__':
 		matrix = np.ones(pred_probs[0].shape)
 		for pred_prob in pred_probs:
 		 	matrix = np.multiply(matrix, pred_prob)
+		y_pred = np.argmax(matrix, axis=1)
+
+	if fusion == 'borda' :
+		matrix = np.zeros(pred_probs[0].shape)
+		for pred_prob in pred_probs:
+			for i in xrange(0,len(pred_prob)):
+				line = pred_prob[i]
+				temp = line.argsort()
+				ranks = np.empty(len(line), int)
+				ranks[temp] = np.arange(len(line))
+				matrix[i] = matrix[i] + ranks
 		y_pred = np.argmax(matrix, axis=1)
 
 	size = len(y_test)

@@ -29,7 +29,7 @@ def GridSearch(X_train, y_train):
         model = grid.best_estimator_
 
         # imprime os parametros desse modelo
-        print grid.best_params_
+        # print grid.best_params_
         return model
 
 def print_usage ():
@@ -109,9 +109,9 @@ if __name__=='__main__':
 	cm = confusion_matrix(y_test, y_pred)
 	print cm
 
-	print "y_pred"
-	print y_pred
+	# print "y_pred"
+	# print y_pred
 
-	print "y_predProb"
-	print y_predProb
+	# print "y_predProb"
+	# print y_predProb
 

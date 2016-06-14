@@ -16,14 +16,20 @@ def color_histogram (image):
 
 def hu_moments (image):
 	image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+	
+	i1 = image[0:50][0:75]
+
+	cv2.namedWindow('image', cv2.WINDOW_NORMAL)
+	cv2.imshow('image',i1)
+	cv2.waitKey(0)
+	cv2.destroyAllWindows()
+
 	features = cv2.HuMoments(cv2.moments(image)).flatten()
 	return features
 
 def histogram_of_oriented_gradients (image):
 	image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-	image = cv2.resize(image, (150,150), interpolation = cv2.INTER_AREA)
-	hist = hog(image, orientations=8, pixels_per_cell=(16,16),
-				cells_per_block=(1, 1), visualise=False, normalise=False)
+	hist = hog(image, orientations=8, pixels_per_cell=(16,16), cells_per_block=(1, 1), visualise=False, normalise=False)
 	return hist.flatten()
 
 def extraction (pathtodata, descriptor) :

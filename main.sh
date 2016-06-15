@@ -1,10 +1,10 @@
 #!/bin/bash
 
-features_list=( hu_moments )
-classifiers=( knn )
+# features_list=( color_histogram )
+# classifiers=( knn )
 
-# features_list=(color_histogram hu_moments histogram_of_oriented_gradients)
-# classifiers=( svm lda knn )
+features_list=( color_histogram hu_moments histogram_of_oriented_gradients )
+classifiers=( svm lda knn )
 
 for features in "${features_list[@]}"
 do

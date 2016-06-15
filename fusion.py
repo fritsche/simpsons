@@ -17,7 +17,8 @@ if __name__=='__main__':
 		# features_list = ['color_histogram']
 		# classifiers = ['svm']
 
-		features_list = ['color_histogram', 'hu_moments', 'histogram_of_oriented_gradients']
+		# features_list = ['color_histogram', 'hu_moments', 'histogram_of_oriented_gradients']
+		features_list = ['color_histogram', 'hu_moments']
 		classifiers = ['svm', 'lda', 'knn']
 
 		preds = []

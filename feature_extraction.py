@@ -16,14 +16,6 @@ def color_histogram (image):
 
 def hu_moments (image):
 	image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-	
-	i1 = image[0:50][0:75]
-
-	cv2.namedWindow('image', cv2.WINDOW_NORMAL)
-	cv2.imshow('image',i1)
-	cv2.waitKey(0)
-	cv2.destroyAllWindows()
-
 	features = cv2.HuMoments(cv2.moments(image)).flatten()
 	return features
 

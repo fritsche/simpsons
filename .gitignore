@@ -5,6 +5,7 @@ data/
 # LaTeX
 *.pdf
 *.aux
+*.out
 *.log
 
 *.ods#

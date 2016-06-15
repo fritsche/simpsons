@@ -14,23 +14,23 @@ SIMPSONS[^1]. O objetivo é construir um sistema de reconhecimento de
 padrões que discriMínimoe as cinco classes (representando os cinco
 personagens principais: Bart, Homer, Lisa, Maggie e Marge).
 
-[b]<span>0.15</span> ![Bart](report/bart001 "fig:") [fig:bart]
+[b]<span>0.15</span> ![Bart](bart001 "fig:") [fig:bart]
 
  
 
-[b]<span>0.15</span> ![Homer](report/homer001 "fig:") [fig:homer]
+[b]<span>0.15</span> ![Homer](homer001 "fig:") [fig:homer]
 
  
 
-[b]<span>0.15</span> ![Lisa](report/lisa001 "fig:") [fig:lisa]
+[b]<span>0.15</span> ![Lisa](lisa001 "fig:") [fig:lisa]
 
  
 
-[b]<span>0.15</span> ![Maggie](report/maggie001 "fig:") [fig:maggie]
+[b]<span>0.15</span> ![Maggie](maggie001 "fig:") [fig:maggie]
 
  
 
-[b]<span>0.15</span> ![Marge](report/marge001 "fig:") [fig:marge]
+[b]<span>0.15</span> ![Marge](marge001 "fig:") [fig:marge]
 
 [fig:exemplos]
 

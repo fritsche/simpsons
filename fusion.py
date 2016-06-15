@@ -31,7 +31,7 @@ if __name__=='__main__':
 			X_test = []
 			y_test = []
 
-			X_train, y_train = extraction ("data/Train/", descriptor)
+			X_train, y_train = extraction ("data/TrainExt/", descriptor)
 			X_test, y_test = extraction ("data/Valid/", descriptor)
 
 			scaler = preprocessing.MinMaxScaler()

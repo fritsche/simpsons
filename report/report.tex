@@ -37,7 +37,7 @@
 \section{Descrição do trabalho}
 
 Para a realização deste trabalho foi utilizada a base de imagens SIMPSONS\footnote{\url{http://www.inf.ufpr.br/lesoliveira/padroes/simpsons.zip}}.
-O objetivo é construir um sistema de reconhecimento de padrões que discriMínimoe as cinco classes (representando os cinco personagens principais: Bart, Homer, Lisa, Maggie e Marge).
+O objetivo é construir um sistema de reconhecimento de padrões que discrimine as cinco classes (representando os cinco personagens principais: Bart, Homer, Lisa, Maggie e Marge).
 
 \begin{figure}[!htb]
     \centering
@@ -94,7 +94,7 @@ O terceiro método de extração de características utilizado foi o HOG, que ut
 \subsection{Classificação}
 
 Para a classificação das imagens, inicialmente os vetores de característica são normalizados.
-Em seguida é aplicado um dos três classificadores implementados: {\it Linear DiscriMínimoant Analysis} (LDA), {\it K-th Nearest Neighbor} (KNN) e {\it Support Vector Machine } (SVM).
+Em seguida é aplicado um dos três classificadores implementados: {\it Linear Discriminant Analysis} (LDA), {\it K-th Nearest Neighbor} (KNN) e {\it Support Vector Machine } (SVM).
 O método KNN, apresenta dois parâmetros, o número de vizinhos ($k$) e a métrica de distância.
 Os valores utilizados foram $k=5$ e distância euclidiana. Não foram avaliados outros valores.
 Para o SVM o modelo foi aprendido por meio de {\it GridSearch}.
@@ -382,11 +382,14 @@ O resultado geral da fusão foi equivalente ao melhor individualmente porém o d
 
 O sistema implementado apresenta como pontos fracos os métodos de extração de características, que não discriminam as classes do problema, sendo que poderiam ter sido utilizados métodos de extração de características melhor discriminantes.
 Além disso a base de imagens utilizada apresenta poucas imagens de algumas classes, o que dificulta o aprendizado.
-Para isso, poderia ter sido aplicadas técnicas pra aumentar a quantidade de exemplos na base, aplicando alterações nas imagens existentes.
+Para isso, poderia ter sido aplicadas técnicas pra aumentar a quantidade de exemplos na base, aplicando alterações nas imagens existentes. 
+Foi realizados os mesmos experimentos com rotações ($0$, $90$, $180$ e $270$ graus) das imagens de teste, criando uma base com mais exemplos. O desempenho foi pior do que com a base original na maioria dos casos, exceto para os métodos de fusão Mínimo e Produto. Mesmo nestes dois últimos o desempenho não superou os valores apresentados no relatório.
+
 Os parâmetros dos métodos poderiam ter sido melhor configurados, utilizando técnicas automáticas de configuração de parâmetros, por exemplo {\it Iterated racing}. Ou ainda algoritmos evolutivos multi-objetivo, considerando como objetivos conflitantes a taxa de classificação em cada classe.
 Como pontos fortes do sistema é possível citar a taxa de acerto com histograma de cor.
 É possível citar ainda a forma com que foram avaliados os classificadores, considerando o desempenho médio por classe, o que ameniza o desempenho de classificadores tendenciosos.
 É sugerido ainda a comparação com Redes Neurais Convolucionais que pode apresentar um bom desempenho na classificação de imagens.
+É sugerido também a incorporação de {\it Bagging } e {\it Boosting} para a construção de classificadores utilizando diferentes exemplos para treinamento. 
 
 \end{document}
 

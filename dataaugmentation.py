@@ -1,35 +1,29 @@
 # Data Augmentation
 # http://docs.opencv.org/master/da/d6e/tutorial_py_geometric_transformations.html#gsc.tab=0
 
-# @TODO refazer de bash para python
+import cv2
+import os
+import sys
 
-for i in 90 180 270; do	
-	rm -rf data/$i/
-	mkdir -p data/$i/
-	for szFile in data/TrainOriginal/*.bmp ; do 
-		output=${szFile##*/}
-		convert $szFile -rotate $i data/$i/${output%.*}_$i.bmp
-		echo data/$i/${output%.*}_$i.bmp
-	done
-done
+for filename in os.listdir('data/Train/'):
 
+	path = 'data/Train/'+filename
+	img = cv2.imread(path)
+	img = cv2.resize(img, (150,150), interpolation = cv2.INTER_LINEAR)
+	rows, cols, channels = img.shape
 
-rm -rf data/flop/
-mkdir -p data/flop/
+	M = cv2.getRotationMatrix2D((cols/2,rows/2),90,1)
+	dst = cv2.warpAffine(img,M,(cols,rows))
+	cv2.imwrite('data/TrainExt/'+filename+'90.bmp',dst)
 
-for szFile in data/TrainOriginal/*.bmp ; do 
-	output=${szFile##*/}
-	convert $szFile -flop data/flop/${output%.*}_flop.bmp
-	echo data/flop/${output%.*}_flop.bmp
-done
+	M = cv2.getRotationMatrix2D((cols/2,rows/2),180,1)
+	dst = cv2.warpAffine(img,M,(cols,rows))
+	cv2.imwrite('data/TrainExt/'+filename+'180.bmp',dst)
 
-rm -rf data/Train
-mkdir -p data/Train
+	M = cv2.getRotationMatrix2D((cols/2,rows/2),270,1)
+	dst = cv2.warpAffine(img,M,(cols,rows))
+	cv2.imwrite('data/TrainExt/'+filename+'270.bmp',dst)	
 
-cp -rv data/TrainOriginal/* data/Train/
-
-for i in 90 180 270; do	
-	cp -rv data/$i/* data/Train/
-done
-
-cp -rv data/flop/* data/Train/
+	M = cv2.getRotationMatrix2D((cols/2,rows/2),0,1)
+	dst = cv2.warpAffine(img,M,(cols,rows))
+	cv2.imwrite('data/TrainExt/'+filename+'0.bmp',dst)	

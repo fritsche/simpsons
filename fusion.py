@@ -10,14 +10,18 @@ from sklearn.metrics import confusion_matrix
 
 if __name__=='__main__':
 
-	fusions_list = ['borda', 'sum', 'max', 'min', 'product']
+	# fusions_list = ['borda', 'sum', 'max', 'min', 'product']
 
+	fusions_list = ['max']
+	
 	for fusion in fusions_list:
 
 		# features_list = ['color_histogram']
 		# classifiers = ['svm']
 
 		# features_list = ['color_histogram', 'hu_moments', 'histogram_of_oriented_gradients']
+		# classifiers = ['svm', 'lda', 'knn']
+
 		features_list = ['color_histogram', 'hu_moments']
 		classifiers = ['svm', 'lda', 'knn']
 
@@ -31,7 +35,7 @@ if __name__=='__main__':
 			X_test = []
 			y_test = []
 
-			X_train, y_train = extraction ("data/TrainExt/", descriptor)
+			X_train, y_train = extraction ("data/Train/", descriptor)
 			X_test, y_test = extraction ("data/Valid/", descriptor)
 
 			scaler = preprocessing.MinMaxScaler()
